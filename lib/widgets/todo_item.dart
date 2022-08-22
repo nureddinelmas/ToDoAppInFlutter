@@ -18,49 +18,56 @@ class ToDoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      child: ListTile(
-        onTap: () {
-          debugPrint("Clicked on Todo item");
-          onToDoChanged(todo);
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tileColor: Colors.white,
-        leading: Icon(
-          todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-          color: tdBlue,
-        ),
-        title: Text(
-          todo.todoText.toString(),
-          style: TextStyle(
-              fontSize: 16,
-              color: tdBlack,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null),
-        ),
-        trailing: Container(
-          padding: EdgeInsets.all(0),
-          margin: EdgeInsets.symmetric(vertical: 12),
-          height: 35,
-          width: 35,
-          decoration: BoxDecoration(
-            color: tdRed,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: IconButton(
-            onPressed: () {
-              debugPrint("delete button basildi");
-              onDeleteItem(todo.id);
+    return Column(
+      children: [
+        Container(
+          child: ListTile(
+            onTap: () {
+              debugPrint("Clicked on Todo item");
+              onToDoChanged(todo);
             },
-            color: Colors.white,
-            iconSize: 18,
-            icon: Icon(Icons.delete),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            tileColor: Colors.white,
+            leading: Icon(
+              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+              color: tdBlue,
+            ),
+            title: Text(
+              todo.todoText.toString(),
+              style: TextStyle(
+                  fontSize: 16,
+                  color: tdBlack,
+                  decoration: todo.isDone ? TextDecoration.lineThrough : null),
+            ),
+            trailing: Container(
+              padding: EdgeInsets.all(0),
+              margin: EdgeInsets.symmetric(vertical: 12),
+              height: 35,
+              width: 35,
+              decoration: BoxDecoration(
+                color: tdRed,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  debugPrint("delete button basildi");
+                  onDeleteItem(todo.id);
+                },
+                color: Colors.white,
+                iconSize: 18,
+                icon: Icon(Icons.delete),
+              ),
+            ),
           ),
         ),
-      ),
+        Divider(
+          height: 17,
+          color: Colors.black,
+        ),
+      ],
     );
   }
 }
