@@ -53,7 +53,6 @@ class ToDoItem extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () {
-                  debugPrint("delete button basildi");
                   onDeleteItem(todo.id);
                 },
                 color: Colors.white,
